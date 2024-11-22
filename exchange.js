@@ -1,6 +1,5 @@
 // get currency from dropdown
 async function getCurrencyOptions() {
-  const url = 'https://currency-exchange.p.rapidapi.com/listquotes';
   const url = 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP';
   const options = {
       method: 'GET',
