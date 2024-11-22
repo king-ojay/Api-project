@@ -1,27 +1,22 @@
 // get currency from dropdown
 async function getCurrencyOptions() {
   const url = 'https://currency-exchange.p.rapidapi.com/listquotes';
+  const url = 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP';
   const options = {
       method: 'GET',
       headers: {
-          'X-RapidAPI-Key': '82fa12159bmsh479216afb44a346p123cf7jsn3b54e8dba6f0',
-          'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+          'x-rapidapi-key': '82fa12159bmsh479216afb44a346p123cf7jsn3b54e8dba6f0',
+          'x-rapidapi-host': 'currency-conversion-and-exchange-rates.p.rapidapi.com'
       }
   };
-
+  
   try {
       const response = await fetch(url, options);
-      const currencies = await response.json();
-
-      if (currencies.length > 0) {
-          populateCurrencyDropdowns(currencies);
-      } else {
-          alert('No currency options found.');
-      }
+      const result = await response.text();
+      console.log(result);
   } catch (error) {
       console.error(error);
   }
-}
 
 function populateCurrencyDropdowns(currencyList) {
   const inputCurrencyFrom = document.getElementById('inputCurrencyFrom');
@@ -46,11 +41,11 @@ getCurrencyOptions();
 // Single definition of the getCurrencyExchangeRates function
 async function getCurrencyExchangeRates(from, to, resultElementId) {
   try {
-      const response = await fetch(`https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from=${from}&to=${to}`, {
+      const response = await fetch(` 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP';`, {
           method: 'GET',
           headers: {
               'X-RapidAPI-Key': '82fa12159bmsh479216afb44a346p123cf7jsn3b54e8dba6f0',
-              'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+              'X-RapidAPI-Host': 'currency-conversion-and-exchange-rates.p.rapidapi.com'
           }
       });
 
@@ -86,4 +81,4 @@ calculateButtons.addEventListener('click', function () {
   const typeCurrencyFromValue = document.getElementById('typeCurrencyFrom').value;
   const typeCurrencyToValue = document.getElementById('typeCurrencyTo').value;
   getCurrencyExchangeRates(typeCurrencyFromValue, typeCurrencyToValue, 'resultCurrency');
-});
+});}
