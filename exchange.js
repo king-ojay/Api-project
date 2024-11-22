@@ -1,4 +1,3 @@
-// Fetch and populate currency options
 async function getCurrencyOptions() {
     const url = 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP';
     const options = {
@@ -11,15 +10,15 @@ async function getCurrencyOptions() {
     
     try {
         const response = await fetch(url, options);
-        const result = await response.json(); // Parse JSON
-        const currencyList = Object.keys(result.rates); // Extract currencies
+        const result = await response.json();
+        const currencyList = Object.keys(result.rates);
         populateCurrencyDropdowns(currencyList);
     } catch (error) {
         console.error('Error fetching currency options:', error);
     }
-  }
+}
   
-  function populateCurrencyDropdowns(currencyList) {
+function populateCurrencyDropdowns(currencyList) {
     const inputCurrencyFrom = document.getElementById('inputCurrencyFrom');
     const inputCurrencyTo = document.getElementById('inputCurrencyTo');
   
@@ -34,10 +33,9 @@ async function getCurrencyOptions() {
         const optionClone = option.cloneNode(true);
         inputCurrencyTo.appendChild(optionClone);
     }
-  }
+}
   
-  // Fetch exchange rates
-  async function getCurrencyExchangeRates(from, to, resultElementId) {
+async function getCurrencyExchangeRates(from, to, resultElementId) {
     try {
         const response = await fetch(`https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=${from}&to=${to}`, {
             method: 'GET',
@@ -64,18 +62,15 @@ async function getCurrencyOptions() {
     } catch (error) {
         console.error('Error fetching exchange rates:', error);
     }
-  }
+}
   
-  // Add event listeners
-  const calculateButton = document.getElementById('buttonCurrency');
-  if (calculateButton) {
+const calculateButton = document.getElementById('buttonCurrency');
+if (calculateButton) {
     calculateButton.addEventListener('click', function () {
         const inputCurrencyFromValue = document.getElementById('inputCurrencyFrom').value;
         const inputCurrencyToValue = document.getElementById('inputCurrencyTo').value;
         getCurrencyExchangeRates(inputCurrencyFromValue, inputCurrencyToValue, 'currencyResult');
     });
-  }
+}
   
-  // Initial population of dropdowns
-  getCurrencyOptions();
-  
+getCurrencyOptions();
