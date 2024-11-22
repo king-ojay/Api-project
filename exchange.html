@@ -27,29 +27,10 @@
                         <select class="form-control marginTopBottom" id="inputCurrencyFrom"></select>
                         <select class="form-control marginTopBottom" id="inputCurrencyTo"></select>
                         <button class="btn btn-primary" id="buttonCurrency">Rate</button>
-                        <button class="btn btn-primary" id="buttonCurrency2" onclick="scrollToContainer()">Enter Currency Code</button>
                     </div>
                 </div>
                 <div class="currencyResult">
                     <h4 id="currencyResult">Result: 0</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="APIContainer2">
-            <h3>Check your favorite currency's exchange rate here today!</h3>
-            <div class="currencyContainer">
-                <div style="margin-top: 16px">
-                    <p>From:</p>
-                    <p>To:</p>
-                </div>
-                <div style="margin-left: 10px">
-                    <input class="form-control marginTopBottom" type="text" id="typeCurrencyFrom" value="EUR">
-                    <input class="form-control marginTopBottom" type="text" id="typeCurrencyTo" value="USD">
-                    <button class="btn btn-primary" id="currencyButton">Rate</button>
-                </div>
-                <div class="resultCurrency">
-                    <h4 id="resultCurrency">Result: 0</h4>
                 </div>
             </div>
         </div>
@@ -60,10 +41,7 @@
     <script>
         //scrolling function
         function scrollToContainer() {
-            const container = document.querySelector('.APIContainer2');
-            if (container) {
-                container.scrollIntoView({ behavior: 'smooth' });
-            }
+            // The second container is no longer present, so this function is not needed.
         }
     </script>
 </body>
